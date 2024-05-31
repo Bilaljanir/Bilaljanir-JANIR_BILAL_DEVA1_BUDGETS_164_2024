@@ -2,15 +2,15 @@
 
 -- Destruction de la BD si elle existe. Pour être certain d'avoir la dernière version des données
 
-DROP DATABASE IF EXISTS JANIR_BILAL_DEVA1_BUDGET_164_2024;
+DROP DATABASE IF EXISTS JANIR_BILAL_DEVA1_BUDGETS_164_2024;
 
 -- Création d'une nouvelle base de données
 
-CREATE DATABASE IF NOT EXISTS JANIR_BILAL_DEVA1_BUDGET_164_2024;
+CREATE DATABASE IF NOT EXISTS JANIR_BILAL_DEVA1_BUDGETS_164_2024;
 
 -- Utilisation de cette base de données
 
-USE JANIR_BILAL_DEVA1_BUDGET_164_2024;
+USE JANIR_BILAL_DEVA1_BUDGETS_164_2024;
 
 -- --------------------------------------------------------
 
@@ -100,6 +100,34 @@ INSERT INTO `t_categories` (`id_categorie`, `nom_categorie`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `t_depense`
+--
+
+CREATE TABLE `t_depense` (
+  `id_depense` int NOT NULL AUTO_INCREMENT,
+  `montant` decimal(10,2) NOT NULL,
+  `date_depense` date DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_depense`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Contenu de la table `t_depense`
+
+INSERT INTO `t_depense` (`id_depense`, `montant`, `date_depense`, `description`) VALUES
+(1, 100.00, '2023-01-10', 'Achat nourriture'),
+(2, 50.00, '2023-01-15', 'Ticket bus'),
+(3, 200.00, '2023-01-20', 'Consultation médicale'),
+(4, 75.00, '2023-01-25', 'Cinéma'),
+(5, 150.00, '2023-01-30', 'Achat livre'),
+(6, 80.00, '2023-02-05', 'Achat vêtements'),
+(7, 1000.00, '2023-02-10', 'Loyer'),
+(8, 60.00, '2023-02-15', 'Facture électricité'),
+(9, 120.00, '2023-02-20', 'Salle de sport'),
+(10, 45.00, '2023-02-25', 'Divers');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `t_categories_depense`
 --
 
@@ -127,34 +155,6 @@ INSERT INTO `t_categories_depense` (`id_categories_depense`, `fk_categories`, `f
 (8, 8, 8),
 (9, 9, 9),
 (10, 10, 10);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `t_depense`
---
-
-CREATE TABLE `t_depense` (
-  `id_depense` int NOT NULL AUTO_INCREMENT,
-  `montant` decimal(10,2) NOT NULL,
-  `date_depense` date DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_depense`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Contenu de la table `t_depense`
-
-INSERT INTO `t_depense` (`id_depense`, `montant`, `date_depense`, `description`) VALUES
-(1, 100.00, '2023-01-10', 'Achat nourriture'),
-(2, 50.00, '2023-01-15', 'Ticket bus'),
-(3, 200.00, '2023-01-20', 'Consultation médicale'),
-(4, 75.00, '2023-01-25', 'Cinéma'),
-(5, 150.00, '2023-01-30', 'Achat livre'),
-(6, 80.00, '2023-02-05', 'Achat vêtements'),
-(7, 1000.00, '2023-02-10', 'Loyer'),
-(8, 60.00, '2023-02-15', 'Facture électricité'),
-(9, 120.00, '2023-02-20', 'Salle de sport'),
-(10, 45.00, '2023-02-25', 'Divers');
 
 -- --------------------------------------------------------
 
@@ -295,4 +295,3 @@ ALTER TABLE `t_personne`
 --
 ALTER TABLE `transaction`
   MODIFY `transaction_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
