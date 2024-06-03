@@ -18,7 +18,7 @@ USE JANIR_BILAL_DEVA1_BUDGETS_164_2024;
 -- Structure de la table `budget`
 --
 
-CREATE TABLE `budget` (
+CREATE TABLE `t_budget` (
   `budget_id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) DEFAULT NULL,
   `montant_initial` decimal(10,2) DEFAULT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE `budget` (
 
 -- Contenu de la table `budget`
 
-INSERT INTO `budget` (`budget_id`, `nom`, `montant_initial`, `date_debut`, `date_fin`) VALUES
+INSERT INTO t_budget (`budget_id`, `nom`, `montant_initial`, `date_debut`, `date_fin`) VALUES
 (1, 'Budget 1', 1000.00, '2023-01-01', '2023-12-31'),
 (2, 'Budget 2', 2000.00, '2023-02-01', '2023-11-30'),
 (3, 'Budget 3', 1500.00, '2023-03-01', '2023-10-31'),
@@ -218,40 +218,13 @@ INSERT INTO `t_personne` (`id_personne`, `nom`, `prenom`, `fk_email`, `fk_adress
 -- --------------------------------------------------------
 
 --
--- Structure de la table `transaction`
---
-
-CREATE TABLE `transaction` (
-  `transaction_id` int NOT NULL AUTO_INCREMENT,
-  `montant` decimal(10,2) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  PRIMARY KEY (`transaction_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Contenu de la table `transaction`
-
-INSERT INTO `transaction` (`transaction_id`, `montant`, `date`) VALUES
-(1, 100.00, '2023-01-01'),
-(2, 200.00, '2023-01-02'),
-(3, 150.00, '2023-01-03'),
-(4, 250.00, '2023-01-04'),
-(5, 300.00, '2023-01-05'),
-(6, 350.00, '2023-01-06'),
-(7, 400.00, '2023-01-07'),
-(8, 450.00, '2023-01-08'),
-(9, 500.00, '2023-01-09'),
-(10, 550.00, '2023-01-10');
-
--- --------------------------------------------------------
-
---
 -- AUTO_INCREMENT pour les tables exportées
 --
 
 --
 -- AUTO_INCREMENT pour la table `budget`
 --
-ALTER TABLE `budget`
+ALTER TABLE t_budget
   MODIFY `budget_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
@@ -290,8 +263,3 @@ ALTER TABLE `t_email`
 ALTER TABLE `t_personne`
   MODIFY `id_personne` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
---
--- AUTO_INCREMENT pour la table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `transaction_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
